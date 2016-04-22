@@ -58,7 +58,7 @@ int main( int argc, char** argv )
 
 
     // Create the vertices for the points and lines
-    for (uint32_t i = 0; i < 100 ++i)
+    for (uint32_t i = 0; i < 100; ++i)
     {
       float y = 5 * sin(f + i / 100.0f * 2 * M_PI);
       float z = 5 * cos(f + i / 100.0f * 2 * M_PI);
