@@ -1,6 +1,12 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h> 
 #include <cmath>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 int main( int argc, char** argv )
 {
@@ -55,18 +61,33 @@ int main( int argc, char** argv )
     line_list.color.r = 1.0;
     line_list.color.a = 1.0;
 
+    ifstream infile;
+    infile.open("test.txt");
+    vector<float> v;
+    string s;
+    float value;
 
+    while(!infile.eof()){
+      infile>>s;
+      value = atof(s.c_str()); 
+      v.push_back(value);
+      //cout<<value<<endl;
+      s.clear();
+    }
+
+    infile.close();
+
+    v.pop_back();
+    int n = v.size();
 
     // Create the vertices for the points and lines
-    for (uint32_t i = 0; i < 100; ++i)
+    for (uint32_t i = 0; i < n; i = i+3)
     {
-      float y = 5 * sin(f + i / 100.0f * 2 * M_PI);
-      float z = 5 * cos(f + i / 100.0f * 2 * M_PI);
 
       geometry_msgs::Point p;
-      p.x = (int32_t)i - 50;
-      p.y = y;
-      p.z = z;
+      p.x = v[i];
+      p.y = v[i+1];
+      p.z = v[i+2];
 
       points.points.push_back(p);
       line_strip.points.push_back(p);
@@ -82,8 +103,9 @@ int main( int argc, char** argv )
     marker_pub.publish(line_strip);
     marker_pub.publish(line_list);
 
-    r.sleep();
+    //r.sleep();
 
-    f += 0.04;
+    sleep(1);
+
   }
 }
