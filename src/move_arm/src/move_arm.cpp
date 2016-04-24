@@ -276,7 +276,6 @@ int main(int argc, char *argv[])
   goal_end_effector_pose.position.z = 0.6;
   group.setPoseTarget(goal_end_effector_pose); 
   group.move();
- ros::Duration(0.5).sleep();
   gripper.close();
   ros::Duration(3).sleep();
   goal_end_effector_pose.orientation.w = 1.0;
@@ -285,8 +284,7 @@ int main(int argc, char *argv[])
   goal_end_effector_pose.position.z = 0.70;
   group.setPoseTarget(goal_end_effector_pose);
   group.move();
- gripper.close();
- ros::Duration(0.5).sleep();
+
   //after grasp the pen, move the arm to another point of the table
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = 1.6;	
@@ -295,25 +293,23 @@ int main(int argc, char *argv[])
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
  gripper.close();
- ros::Duration(3).sleep();
+ 
    std::cout<<"ready to write"<<std::endl;
     //ready to write
   float basex = 1.6;
   float basey = 0.4;
   if(letter_=='a')
   {
- geometry_msgs::Pose goal_end_effector_pose2;
- ros::Duration(0.5).sleep();
+ 
    std::cout<<"input is a "<<std::endl;
  std::cout<<"111"<<std::endl;
-    goal_end_effector_pose2.orientation.w = 1.0;
-    goal_end_effector_pose2.position.x = basex + 0.02;	
-    goal_end_effector_pose2.position.y = basey + 0.02;
-    goal_end_effector_pose2.position.z = 0.65;
-    group.setPoseTarget(goal_end_effector_pose2);
+    goal_end_effector_pose.orientation.w = 1.0;
+    goal_end_effector_pose.position.x = basex + 0.02;	
+    goal_end_effector_pose.position.y = basey + 0.02;
+    goal_end_effector_pose.position.z = 0.65;
+    group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
     std::cout<<"222"<<std::endl;  ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -321,8 +317,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"333"<<std::endl; ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.06;	
@@ -330,8 +325,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"444"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.07;	
@@ -339,8 +333,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
   std::cout<<"555"<<std::endl;  ros::Duration(0.5).sleep();  
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.06;	
@@ -348,8 +341,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
   std::cout<<"666"<<std::endl;ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -357,8 +349,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"777"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.02;	
@@ -366,8 +357,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"888"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.06;	
@@ -375,8 +365,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
   std::cout<<"999"<<std::endl;ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -384,8 +373,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"101010"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -393,7 +381,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
+
  std::cout<<"111111"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -401,8 +389,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
- ros::Duration(3).sleep();
+
  std::cout<<"121212"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -410,7 +397,6 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
- gripper.close();
   }
   return 0;
 }
