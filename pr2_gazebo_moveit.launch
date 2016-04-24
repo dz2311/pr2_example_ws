@@ -20,8 +20,8 @@
 
   <!-- Add Coke can to the world -->
   <node name="spawn_object" pkg="gazebo_ros" type="spawn_model" 
-   args="-urdf -file $(find system_launch)/models/coke_can.urdf -model coke -x 1.8 -y 0.6 -z 0.55"
+   args="-urdf -file $(find system_launch)/models/pen.urdf -model coke -x 1.8 -y 0.4 -z 0.8"
    respawn="false" output="screen" />
   
-   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find system_launch)/launch/rviz.rviz"/>
+   <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find system_launch)/launch/rviz.rviz"/-->
 </launch>
