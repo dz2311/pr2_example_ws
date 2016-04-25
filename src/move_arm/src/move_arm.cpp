@@ -137,21 +137,23 @@ public:
   }
 };
 
-void writeFIle_StraightLine(float x_prev, float y_prev, float x_cur, float y_cur)
+void writeFIle_StraightLine(float x_prev, float y_prev, float x_cur, float y_cur, float basex, float basey)
 {
-  int sample = 10;
+  int sample = 0;
   std::ofstream out("/home/dz2311/PR2write.txt", std::ios::app);
-  float arr[sample*2+4];
+  float arr[sample*3+6];
   float disx = (x_cur-x_prev)/(sample+1);
   float disy = (y_cur-y_prev)/(sample+1);
   for(int i=0; i<sample+2;++i)
   {
-    arr[i] = x_cur+i*disx;
-    arr[i+1] = y_cur+i*disy;
+    arr[3*i] = x_prev+i*disx - basex;
+    arr[3*i+1] = y_prev+i*disy - basey;
+    arr[3*i+2] = 0.0;
     if(out.good())
       {
-	out << arr[i] <<"\n";
-	out << arr[i+1] <<"\n";
+	out << arr[3*i] <<"\n";
+	out << arr[3*i+1] <<"\n";
+	out << arr[3*i+2] <<"\n";
       }
   }
   out.close();
@@ -246,6 +248,7 @@ int main(int argc, char *argv[])
   {
  
     std::cout<<"input is a "<<std::endl;
+    /*
     std::cout<<"111"<<std::endl;
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.02;	
@@ -253,7 +256,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-    writeFIle_StraightLine(basex, basey,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y);
+    writeFIle_StraightLine(basex, basey,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
     std::cout<<"222"<<std::endl;  ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -261,6 +264,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
+    writeFIle_StraightLine(basex+0.02, basey+0.02,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
 
     std::cout<<"333"<<std::endl; ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
@@ -269,6 +273,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
+    writeFIle_StraightLine(basex+0.04, basey+0.04,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
 
     std::cout<<"444"<<std::endl; ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
@@ -277,7 +282,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.06, basey+0.06,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
   std::cout<<"555"<<std::endl;  ros::Duration(0.5).sleep();  
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.06;	
@@ -285,7 +290,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.07, basey+0.08,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
     std::cout<<"666"<<std::endl;ros::Duration(0.5).sleep();
     goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -293,7 +298,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.06, basey+0.10,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
  std::cout<<"777"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.02;	
@@ -301,7 +306,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.04, basey+0.12,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
  std::cout<<"888"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.06;	
@@ -309,7 +314,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.02, basey+0.14,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
   std::cout<<"999"<<std::endl;ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -317,7 +322,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.06, basey+0.10,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
  std::cout<<"101010"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -325,7 +330,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.04, basey+0.10,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
  std::cout<<"111111"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -333,7 +338,7 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
-
+    writeFIle_StraightLine(basex+0.04, basey+0.08,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
  std::cout<<"121212"<<std::endl; ros::Duration(0.5).sleep();
      goal_end_effector_pose.orientation.w = 1.0;
     goal_end_effector_pose.position.x = basex + 0.04;	
@@ -341,6 +346,43 @@ int main(int argc, char *argv[])
     goal_end_effector_pose.position.z = 0.65;
     group.setPoseTarget(goal_end_effector_pose);
     group.move();
+    writeFIle_StraightLine(basex+0.04, basey+0.06,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);*/
+ std::cout<<"111"<<std::endl;
+    goal_end_effector_pose.orientation.w = 1.0;
+    goal_end_effector_pose.position.x = basex + 0.06;	
+    goal_end_effector_pose.position.y = basey + 0.06;
+    goal_end_effector_pose.position.z = 0.65;
+    group.setPoseTarget(goal_end_effector_pose);
+    group.move();
+    writeFIle_StraightLine(basex, basey,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
+
+ std::cout<<"222"<<std::endl; ros::Duration(0.5).sleep();
+    goal_end_effector_pose.orientation.w = 1.0;
+    goal_end_effector_pose.position.x = basex;	
+    goal_end_effector_pose.position.y = basey + 0.12;
+    goal_end_effector_pose.position.z = 0.65;
+    group.setPoseTarget(goal_end_effector_pose);
+    group.move();
+    writeFIle_StraightLine(basex+0.06, basey+0.06,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
+
+ std::cout<<"333"<<std::endl; ros::Duration(0.5).sleep();
+    goal_end_effector_pose.orientation.w = 1.0;
+    goal_end_effector_pose.position.x = basex + 0.03;	
+    goal_end_effector_pose.position.y = basey + 0.09;
+    goal_end_effector_pose.position.z = 0.65;
+    group.setPoseTarget(goal_end_effector_pose);
+    group.move();
+    writeFIle_StraightLine(basex, basey+0.12,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
+
+ std::cout<<"444"<<std::endl; ros::Duration(0.5).sleep();
+    goal_end_effector_pose.orientation.w = 1.0;
+    goal_end_effector_pose.position.x = basex + 0.03;	
+    goal_end_effector_pose.position.y = basey + 0.03;
+    goal_end_effector_pose.position.z = 0.65;
+    group.setPoseTarget(goal_end_effector_pose);
+    group.move();
+    writeFIle_StraightLine(basex+0.03, basey+0.09,  goal_end_effector_pose.position.x,  goal_end_effector_pose.position.y, basex, basey);
+
   }
 
   if(letter_=='b')
