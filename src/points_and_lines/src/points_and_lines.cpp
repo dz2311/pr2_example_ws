@@ -61,7 +61,7 @@ int main( int argc, char** argv )
     line_list.color.a = 1.0;
 
     ifstream infile;
-    infile.open("/home/sz2558/A.txt");
+    infile.open("/home/dz2311/PR2write.txt");
     vector<float> v;
     string s;
     float value;
@@ -84,9 +84,9 @@ int main( int argc, char** argv )
     {
 
       geometry_msgs::Point p;
-      p.x = v[i]*5;
-      p.y = v[i+1]*5;
-      p.z = v[i+2]*5;
+      p.x = v[i]*30;
+      p.y = v[i+1]*15;
+      p.z = v[i+2];
 
       // cout<<v[i]<<v[i+1]<<v[i+2]<<endl;
 
