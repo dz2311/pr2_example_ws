@@ -1,0 +1,21 @@
+void writeFIle_StraightLine(float x_prev, float y_prev, float x_cur, float y_cur, float basex, float basey)
+{
+  int sample = 0;
+  std::ofstream out("/home/dz2311/PR2write.txt", std::ios::app);
+  float arr[sample*3+6];
+  float disx = (x_cur-x_prev)/(sample+1);
+  float disy = (y_cur-y_prev)/(sample+1);
+  for(int i=0; i<sample+2;++i)
+  {
+    arr[3*i] = x_prev+i*disx - basex;
+    arr[3*i+1] = y_prev+i*disy - basey;
+    arr[3*i+2] = 0.0;
+    if(out.good())
+      {
+	out << arr[3*i] <<"\n";
+	out << arr[3*i+1] <<"\n";
+	out << arr[3*i+2] <<"\n";
+      }
+  }
+  out.close();
+}
