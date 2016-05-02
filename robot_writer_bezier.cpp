@@ -184,7 +184,7 @@ void interpolation(float x, float y, float z, float x1, float y1, float z1, floa
   void bezierCurve(const std::vector<float> in_points, std::vector<float> &out_points, int sample_time)
 {
   int row_offset = (int)in_points.size()/9;
-  float delta_sample = 1/(sample_time-1);
+  float delta_sample = 1/(float)(sample_time-1);
 
    for(int i=0; i<row_offset; ++i)
    {
